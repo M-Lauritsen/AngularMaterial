@@ -4,12 +4,14 @@
 }
 .sidenav-container {
   width: 10%;
+  height: 100%;
   padding: 20px;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 
 .content-container {

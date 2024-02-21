@@ -1,9 +1,10 @@
 <mat-drawer-container class="nav-container">
-  <mat-drawer class="sidenav-container" mode="side" opened
-    >Drawer content</mat-drawer
-  >
-  <mat-drawer-content class="content-container"
-    >Main content
+  <mat-drawer class="sidenav-container" mode="side" opened>
+    <nav class="nav-container">
+      <a routerLink="/table" routerLinkActive="active">Table</a>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content class="content-container">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
