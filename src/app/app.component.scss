@@ -7,20 +7,21 @@
   padding: 20px;
   .nav-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    flex-direction: column;
+    li {
+      list-style-type: none;
+    }
   }
 }
 
 .content-container {
-  width: 90%;
   padding: 20px;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 .router-container {
