@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Dob, Location, Login, Name, UserRoot } from '../../models/user-model';
 import { UserService } from '../../services/user.service';
@@ -57,9 +57,7 @@ export class TableTreeComponent {
   @ViewChild(MatTable) table!: MatTable<UserRoot>;
 
   constructor(private userService: UserService) {
-    this.userService.getUsers().then((users) => {
-      this.formatUserTree(users);
-    });
+    this.formatUserTree(this.userService.getUsers());
     this.table = {} as MatTable<UserRoot>;
   }
 
@@ -78,7 +76,6 @@ export class TableTreeComponent {
         this.formatDOB(user.dob),
       ].filter((node) => node.value !== undefined || node.children),
     }));
-
     this.dataSource.data = formattedData;
   }
 

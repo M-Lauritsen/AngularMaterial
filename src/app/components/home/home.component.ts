@@ -6,12 +6,15 @@ import { SignalService } from '../../services/signal.service';
   selector: 'app-home',
   standalone: true,
   imports: [],
-  providers: [UserService],
+  providers: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  constructor(private signalService: SignalService) {}
+  constructor(
+    private signalService: SignalService,
+    private userService: UserService
+  ) {}
   messaage!: string;
   ngOnInit(): void {}
 
@@ -19,5 +22,9 @@ export class HomeComponent implements OnInit {
     let randomMsg = Math.random().toString();
     this.messaage = randomMsg;
     this.signalService.sendMessage(randomMsg);
+  }
+
+  fetchUsers() {
+    this.userService.fetchUsers();
   }
 }

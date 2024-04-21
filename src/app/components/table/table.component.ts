@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, effect } from '@angular/core';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +12,7 @@ import { UserRoot } from '../../models/user-model';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   imports: [MatButtonModule, MatTableModule, MatIconModule, CommonModule],
-  providers: [UserService],
+  providers: [],
 })
 export class TableComponent {
   displayedColumns: string[] = [
@@ -28,8 +28,8 @@ export class TableComponent {
   @ViewChild(MatTable) table!: MatTable<UserRoot>;
 
   constructor(private userService: UserService) {
-    this.userService.getUsers().then((users) => {
-      this.dataSource = users;
+    effect(() => {
+      this.dataSource = this.userService.getUsers();
     });
     this.table = {} as MatTable<UserRoot>;
   }
