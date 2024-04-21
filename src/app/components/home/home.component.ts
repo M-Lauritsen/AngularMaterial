@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { SignalService } from '../../services/signal.service';
+import { CoreService } from '../../services/core.service';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,15 @@ import { SignalService } from '../../services/signal.service';
 export class HomeComponent implements OnInit {
   constructor(
     private signalService: SignalService,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private coreService: CoreService
+  ) {
+    effect(() => {
+      this.selectedDate = this.coreService.getDate();
+    });
+  }
+
+  selectedDate!: string;
   messaage!: string;
   ngOnInit(): void {}
 
