@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { SignalService } from '../../services/signal.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,13 @@ import { UserService } from '../../services/user.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  users: any[] = [];
-  constructor(private userService: UserService) {}
+  constructor(private signalService: SignalService) {}
+  messaage!: string;
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.userService.getUsers().then((users) => {
-      this.users = users;
-      console.log(this.users);
-    });
+  sendSignal() {
+    let randomMsg = Math.random().toString();
+    this.messaage = randomMsg;
+    this.signalService.sendMessage(randomMsg);
   }
 }
