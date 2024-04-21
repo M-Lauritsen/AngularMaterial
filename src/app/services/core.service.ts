@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoreService {
+  private selectedDate = signal<string>('');
+  constructor() {}
 
-  constructor() { }
+  setDate(inputDate: string) {
+    this.selectedDate.update(() => inputDate);
+  }
+
+  getDate() {
+    return this.selectedDate();
+  }
 }
