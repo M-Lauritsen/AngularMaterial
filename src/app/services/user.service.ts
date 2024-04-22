@@ -14,7 +14,6 @@ export class UserService {
       const data = await response.json();
       const users = data.results as UserRoot[];
       this.fecthedUsers.update(() => users);
-      console.log('Fetched updated:', this.getUsers());
     } catch (error) {
       console.error('Error fetching users:', error);
     }

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +21,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
 })
 export class AppComponent {
   title = 'Angular Material';
+  constructor(private userService: UserService) {
+    this.userService.fetchUsers();
+  }
 }

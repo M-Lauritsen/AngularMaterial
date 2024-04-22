@@ -1,0 +1,27 @@
+@if (user) {
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ user.email }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ user.name.title }}. {{ user.name.first }}
+      {{ user.name.last }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="{{ user.picture.large }}"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <li>Username: {{ user.login.username }}</li>
+    <li>Phone: {{ user.phone }}</li>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+
+}
+{{ user | json }}
