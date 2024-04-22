@@ -14,10 +14,12 @@ import { CommonModule } from '@angular/common';
 })
 export class CardComponent {
   user!: UserRoot;
+  users!: UserRoot[];
 
   constructor(private userService: UserService) {
     effect(() => {
       this.user = this.userService.getUsers()[0];
+      this.users = this.userService.getUsers();
       // const users = this.userService.getUsers();
       // this.user = users[0];
       // console.log('Card: ', this.user);
