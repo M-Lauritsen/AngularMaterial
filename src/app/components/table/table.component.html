@@ -1,15 +1,5 @@
 <div class="demo-button-container">
-  <button mat-raised-button (click)="addData()" class="demo-button">
-    Add data
-  </button>
-  <button
-    mat-raised-button
-    [disabled]="!dataSource.length"
-    (click)="removeData()"
-    class="demo-button"
-  >
-    Remove data
-  </button>
+  <app-bottomsheet></app-bottomsheet>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
@@ -59,6 +49,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-
-<!-- format json data -->
-<pre style="font-size: small">{{ dataSource | json }}</pre>

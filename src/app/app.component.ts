@@ -4,6 +4,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { UserService } from './services/user.service';
+import { BottomsheetComponent } from './components/bottomsheet/bottomsheet.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { UserService } from './services/user.service';
     RouterLink,
     RouterLinkActive,
     DatepickerComponent,
+    BottomsheetComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

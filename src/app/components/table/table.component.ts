@@ -5,14 +5,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { UserRoot } from '../../models/user-model';
+import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
-  imports: [MatButtonModule, MatTableModule, MatIconModule, CommonModule],
   providers: [],
+  imports: [
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    CommonModule,
+    BottomsheetComponent,
+  ],
 })
 export class TableComponent {
   displayedColumns: string[] = [
