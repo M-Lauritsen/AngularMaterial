@@ -6,6 +6,7 @@ import { SignalReceiverComponent } from './components/signal-receiver/signal-rec
 import { TableTreeComponent } from './components/table-tree/table-tree.component';
 import { CardComponent } from './components/card/card.component';
 import { ChipsComponent } from './components/chips/chips.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'card', component: CardComponent },
   { path: 'signal', component: SignalReceiverComponent },
   { path: 'chips', component: ChipsComponent },
+  { path: 'stepper', component: StepperComponent },
 ];

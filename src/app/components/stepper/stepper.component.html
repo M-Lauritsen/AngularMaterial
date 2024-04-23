@@ -1,0 +1,24 @@
+<div class="stepper-container">
+  <mat-stepper orientation="vertical">
+    <mat-step>
+      <ng-template matStepLabel>1. Name</ng-template>
+      <ng-template matStepContent>
+        <app-card></app-card>
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>2. Street</ng-template>
+      <ng-template matStepContent>
+        <p>This content was also rendered lazily</p>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>3. Done</ng-template>
+      <p>This content was rendered eagerly</p>
+      <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+  </mat-stepper>
+</div>
