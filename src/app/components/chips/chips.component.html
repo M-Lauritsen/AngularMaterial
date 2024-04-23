@@ -1,1 +1,25 @@
-<p>chips works!</p>
+<p>Copy of chiplist from Material Angular</p>
+<div class="listbox-container">
+  <mat-chip-listbox
+    class="mat-mdc-chip-set-stacked"
+    aria-label="Color selection"
+  >
+    @for (chip of availableChips; track chip) {
+    <mat-chip-option [color]="chip.color">{{ chip.name }}</mat-chip-option>
+    }
+  </mat-chip-listbox>
+</div>
+<br />
+<p>Logs the chip info in console</p>
+<div class="listbox-container">
+  <mat-chip-listbox
+    class="mat-mdc-chip-set-stacked"
+    aria-label="Color selection"
+  >
+    @for (chip of schemaList; track chip) {
+    <mat-chip-option (selectionChange)="LogChip(chip)" [color]="chip.color"
+      >{{ chip.name }}
+    </mat-chip-option>
+    }
+  </mat-chip-listbox>
+</div>
