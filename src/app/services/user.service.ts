@@ -22,4 +22,9 @@ export class UserService {
   getUsers() {
     return this.fecthedUsers();
   }
+
+  getCount() {
+    console.log(this.fecthedUsers.length);
+    return this.fecthedUsers.length;
+  }
 }
