@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { UserRoot } from '../../models/user-model';
 import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 import { TableToggleColumsComponent } from './table-toggle-colums/table-toggle-colums.component';
+import { StandardTableComponent } from './standard-table/standard-table.component';
 
 @Component({
   selector: 'app-table',
@@ -16,43 +17,9 @@ import { TableToggleColumsComponent } from './table-toggle-colums/table-toggle-c
   providers: [],
   imports: [
     MatButtonModule,
-    MatTableModule,
-    MatIconModule,
-    CommonModule,
     BottomsheetComponent,
     TableToggleColumsComponent,
+    StandardTableComponent,
   ],
 })
-export class TableComponent {
-  displayedColumns: string[] = [
-    'username',
-    'name',
-    'email',
-    'phone',
-    'picture',
-    'actions',
-  ];
-  dataSource = [] as UserRoot[];
-
-  @ViewChild(MatTable) table!: MatTable<UserRoot>;
-
-  constructor(private userService: UserService) {
-    effect(() => {
-      this.dataSource = this.userService.getUsers();
-    });
-    this.table = {} as MatTable<UserRoot>;
-  }
-
-  addData() {
-    this.table.renderRows();
-  }
-
-  removeData() {
-    this.dataSource.pop();
-    this.table.renderRows();
-  }
-  removeRow(index: number) {
-    this.dataSource.splice(index, 1);
-    this.table.renderRows();
-  }
-}
+export class TableComponent {}

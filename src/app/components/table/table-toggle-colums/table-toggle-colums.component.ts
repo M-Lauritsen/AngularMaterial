@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, effect } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, effect } from '@angular/core';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { UserRoot } from '../../../models/user-model';
 import { UserService } from '../../../services/user.service';
