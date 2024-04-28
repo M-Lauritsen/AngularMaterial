@@ -11,10 +11,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './bottomsheet-view.component.scss',
 })
 export class BottomsheetViewComponent {
-  users!: UserRoot[];
-  constructor(private userService: UserService) {
-    effect(() => {
-      this.users = this.userService.getUsers();
-    });
-  }
+  constructor(public userService: UserService) {}
 }

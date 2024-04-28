@@ -25,11 +25,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 })
 export class AppComponent {
   title = 'Angular Material';
-  tableBadge!: number;
   constructor(public userService: UserService) {
-    effect(() => {
-      this.tableBadge = this.userService.getUsers().length;
-    });
     this.userService.fetchUsers();
   }
 }

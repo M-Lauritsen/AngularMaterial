@@ -1,3 +1,9 @@
-<button mat-raised-button (click)="openBottomSheet()">
+<button
+  mat-raised-button
+  (click)="openBottomSheet()"
+  matBadge="{{ userService.getUsers().length }}"
+  matBadgeSize="small"
+  matBadgeColor="warn"
+>
   Open User Data Object
 </button>

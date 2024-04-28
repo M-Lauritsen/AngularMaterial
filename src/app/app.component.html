@@ -11,7 +11,7 @@
         <a
           routerLink="/table"
           routerLinkActive="active"
-          matBadge="{{ tableBadge }}"
+          matBadge="{{ userService.getUsers().length }}"
           matBadgeOverlap="false"
           matBadgeSize="small"
           matBadgeColor="warn"
