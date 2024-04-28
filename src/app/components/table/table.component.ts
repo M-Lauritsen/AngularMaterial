@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { UserRoot } from '../../models/user-model';
 import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
+import { TableToggleColumsComponent } from './table-toggle-colums/table-toggle-colums.component';
 
 @Component({
   selector: 'app-table',
@@ -19,6 +20,7 @@ import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
     MatIconModule,
     CommonModule,
     BottomsheetComponent,
+    TableToggleColumsComponent,
   ],
 })
 export class TableComponent {

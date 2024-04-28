@@ -1,5 +1,13 @@
-<div class="demo-button-container">
-  <app-bottomsheet></app-bottomsheet>
+<div class="column-toggles">
+  <span *ngFor="let column of allColumns">
+    <mat-checkbox
+      (change)="toggleColumn(column)"
+      [checked]="displayedColumns.includes(column)"
+      [color]="'primary'"
+    >
+      {{ getColumnDisplayName(column) }}
+    </mat-checkbox>
+  </span>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
@@ -49,9 +57,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<br />
-<!-- add and remove columns -->
-<hr />
-<br />
-<h1>Add remove columns</h1>
-<app-table-toggle-colums></app-table-toggle-colums>
