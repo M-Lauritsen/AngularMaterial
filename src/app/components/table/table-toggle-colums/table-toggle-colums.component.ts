@@ -5,11 +5,24 @@ import { UserService } from '../../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {
+  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-table-toggle-colums',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, CommonModule, MatCheckboxModule],
+  imports: [
+    MatTableModule,
+    MatIconModule,
+    CommonModule,
+    MatCheckboxModule,
+    CdkDropList,
+    CdkDrag,
+  ],
   templateUrl: './table-toggle-colums.component.html',
   styleUrl: './table-toggle-colums.component.scss',
 })
@@ -43,6 +56,7 @@ export class TableToggleColumsComponent implements OnInit {
   }
 
   toggleColumn(column: string): void {
+    console.log(column);
     const index = this.displayedColumns.indexOf(column);
     if (index >= 0) {
       this.displayedColumns.splice(index, 1);
@@ -70,6 +84,19 @@ export class TableToggleColumsComponent implements OnInit {
       actions: 'Actions',
     };
     return names[column] || column; // Now TypeScript knows how to handle this
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    moveItemInArray(
+      this.displayedColumns,
+      event.previousIndex,
+      event.currentIndex
+    );
+    localStorage.setItem(
+      'displayedColumns',
+      JSON.stringify(this.displayedColumns)
+    );
   }
 }
 interface ColumnNames {
