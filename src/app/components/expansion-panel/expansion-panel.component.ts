@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TableComponent } from '../table/table.component';
+import { StandardTableComponent } from '../table/standard-table/standard-table.component';
 
 @Component({
   selector: 'app-expansion-panel',
   standalone: true,
-  imports: [MatExpansionModule, TableComponent],
+  imports: [MatExpansionModule, StandardTableComponent],
   templateUrl: './expansion-panel.component.html',
   styleUrl: './expansion-panel.component.scss',
 })
