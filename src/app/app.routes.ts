@@ -7,11 +7,12 @@ import { TableTreeComponent } from './components/table-tree/table-tree.component
 import { CardComponent } from './components/card/card.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent },
-  { path: 'tree', component: TableTreeComponent },
+  { path: 'tree', component: TableTreeComponent, canActivate: [MsalGuard] },
   { path: 'expansion-panel', component: ExpansionPanelComponent },
   { path: 'card', component: CardComponent },
   { path: 'signal', component: SignalReceiverComponent },

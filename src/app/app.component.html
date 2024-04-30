@@ -2,6 +2,11 @@
   <mat-drawer class="sidenav-container" mode="side" opened>
     <nav class="nav-container">
       <li>
+        <button mat-menu-item (click)="loginRedirect()">
+          Login using Redirect
+        </button>
+      </li>
+      <li>
         <app-datepicker></app-datepicker>
       </li>
       <li>
