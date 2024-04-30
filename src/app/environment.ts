@@ -8,7 +8,7 @@ export const environment = {
     },
   },
   apiConfig: {
-    scopes: ['Files.Read'],
-    uri: '5005234f-68f1-4263-b800-7000a022311e',
+    scopes: ['user.read'],
+    uri: 'https://graph.microsoft.com/v1.0/me',
   },
 };

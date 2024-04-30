@@ -8,6 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { ChipsComponent } from './components/chips/chips.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { MsalGuard } from '@azure/msal-angular';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'signal', component: SignalReceiverComponent },
   { path: 'chips', component: ChipsComponent },
   { path: 'stepper', component: StepperComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
 ];

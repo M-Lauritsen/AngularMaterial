@@ -1,11 +1,15 @@
 <mat-drawer-container class="nav-container">
   <mat-drawer class="sidenav-container" mode="side" opened>
     <nav class="nav-container">
+      @if(!loginDisplay){
       <li>
-        <button mat-menu-item (click)="loginRedirect()">
-          Login using Redirect
-        </button>
+        <button mat-menu-item (click)="loginRedirect()">Login</button>
       </li>
+      } @else {
+      <li>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </li>
+      }
       <li>
         <app-datepicker></app-datepicker>
       </li>
@@ -43,6 +47,11 @@
       <li>
         <a routerLink="/stepper" routerLinkActive="active">Stepper</a>
       </li>
+      @if(loginDisplay){
+      <li>
+        <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      </li>
+      }
     </nav>
   </mat-drawer>
   <mat-drawer-content class="content-container">

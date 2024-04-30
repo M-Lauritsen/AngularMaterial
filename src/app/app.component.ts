@@ -108,4 +108,7 @@ export class AppComponent implements OnInit {
       this.authService.loginRedirect();
     }
   }
+  logout() {
+    this.authService.logoutRedirect();
+  }
 }
