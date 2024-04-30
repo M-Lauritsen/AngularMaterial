@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environment';
+import { ProfileType } from '../../models/profile-type';
 
 @Component({
   selector: 'app-profile',
@@ -19,15 +20,7 @@ export class ProfileComponent implements OnInit {
   }
   getProfile(uri: string) {
     this.http.get(uri).subscribe((profile) => {
-      console.log(profile);
       this.profile = profile;
     });
   }
 }
-
-type ProfileType = {
-  givenName?: string;
-  surname?: string;
-  userPrincipalName?: string;
-  id?: string;
-};
