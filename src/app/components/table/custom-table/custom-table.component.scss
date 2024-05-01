@@ -1,0 +1,5 @@
+@use "@angular/material" as mat;
+
+.density-settings {
+  @include mat.table-density(-4);
+}
