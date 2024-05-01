@@ -8,8 +8,6 @@ import { BottomsheetComponent } from './components/bottomsheet/bottomsheet.compo
 import {
   IPublicClientApplication,
   PublicClientApplication,
-  BrowserCacheLocation,
-  LogLevel,
   InteractionType,
 } from '@azure/msal-browser';
 import { environment, msalConfig } from './environment';
@@ -23,7 +21,6 @@ import {
   MsalInterceptor,
   MsalInterceptorConfiguration,
   MsalService,
-  ProtectedResourceScopes,
 } from '@azure/msal-angular';
 import {
   provideHttpClient,
