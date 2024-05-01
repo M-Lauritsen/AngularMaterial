@@ -9,6 +9,7 @@ import { ChipsComponent } from './components/chips/chips.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { MsalGuard } from '@azure/msal-angular';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'signal', component: SignalReceiverComponent },
   { path: 'chips', component: ChipsComponent },
   { path: 'stepper', component: StepperComponent },
+  { path: 'select', component: MultiSelectComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
 ];
