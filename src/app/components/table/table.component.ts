@@ -8,6 +8,7 @@ import { UserRoot } from '../../models/user-model';
 import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 import { TableToggleColumsComponent } from './table-toggle-colums/table-toggle-colums.component';
 import { StandardTableComponent } from './standard-table/standard-table.component';
+import { CustomTableComponent } from './custom-table/custom-table.component';
 
 @Component({
   selector: 'app-table',
@@ -20,6 +21,7 @@ import { StandardTableComponent } from './standard-table/standard-table.componen
     BottomsheetComponent,
     TableToggleColumsComponent,
     StandardTableComponent,
+    CustomTableComponent,
   ],
 })
 export class TableComponent {}
