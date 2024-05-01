@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
   EventType,
   RouterLink,
@@ -24,6 +24,7 @@ import {
   RedirectRequest,
 } from '@azure/msal-browser';
 import { Subject, filter, takeUntil } from 'rxjs';
+import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,7 @@ import { Subject, filter, takeUntil } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'Angular Material';
   isIframe = false;
   loginDisplay = false;
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public userService: UserService,
+    private weatherService: WeatherService,
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService
@@ -110,5 +112,15 @@ export class AppComponent implements OnInit {
   }
   logout() {
     this.authService.logoutRedirect();
+  }
+  getWeather() {
+    this.weatherService.getWeather().subscribe((weather) => {
+      console.log(weather);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next(undefined);
+    this._destroying$.complete();
   }
 }

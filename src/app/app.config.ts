@@ -12,7 +12,7 @@ import {
   LogLevel,
   InteractionType,
 } from '@azure/msal-browser';
-import { environment } from './environment';
+import { environment, msalConfig } from './environment';
 import {
   MSAL_GUARD_CONFIG,
   MSAL_INSTANCE,
@@ -23,6 +23,7 @@ import {
   MsalInterceptor,
   MsalInterceptorConfiguration,
   MsalService,
+  ProtectedResourceScopes,
 } from '@azure/msal-angular';
 import {
   provideHttpClient,
@@ -62,21 +63,14 @@ export const appConfig: ApplicationConfig = {
 };
 
 export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication({
-    auth: {
-      clientId: environment.msalConfig.auth.clientId,
-      authority: environment.msalConfig.auth.authority,
-      redirectUri: '/',
-      postLogoutRedirectUri: '/',
-    },
-  });
+  return new PublicClientApplication(msalConfig);
 }
 
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
     authRequest: {
-      scopes: [...environment.apiConfig.scopes],
+      scopes: [...environment.WeatherApiConfig.scopes],
     },
     loginFailedRoute: '/login-failed',
   };
@@ -87,6 +81,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   protectedResourceMap.set(
     environment.apiConfig.uri,
     environment.apiConfig.scopes
+  );
+  protectedResourceMap.set(
+    environment.WeatherApiConfig.uri,
+    environment.WeatherApiConfig.scopes
   );
 
   return {
