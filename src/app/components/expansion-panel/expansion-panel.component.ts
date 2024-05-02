@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { TableComponent } from '../table/table.component';
 import { StandardTableComponent } from '../table/standard-table/standard-table.component';
 
 @Component({

@@ -1,25 +1,24 @@
 import { Routes } from '@angular/router';
-import { TableComponent } from './components/table/table.component';
 import { HomeComponent } from './components/home/home.component';
-import { ExpansionPanelComponent } from './components/expansion-panel/expansion-panel.component';
-import { SignalReceiverComponent } from './components/signal-receiver/signal-receiver.component';
-import { TableTreeComponent } from './components/table-tree/table-tree.component';
-import { CardComponent } from './components/card/card.component';
-import { ChipsComponent } from './components/chips/chips.component';
-import { StepperComponent } from './components/stepper/stepper.component';
 import { MsalGuard } from '@azure/msal-angular';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { CardViewComponent } from './pages/card-view/card-view.component';
+import { ChipsViewComponent } from './pages/chips-view/chips-view.component';
+import { ExpansionViewComponent } from './pages/expansion-view/expansion-view.component';
+import { SelectViewComponent } from './pages/select-view/select-view.component';
+import { SignalViewComponent } from './pages/signal-view/signal-view.component';
+import { StepperViewComponent } from './pages/stepper-view/stepper-view.component';
+import { TableViewComponent } from './pages/table-view/table-view.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'table', component: TableComponent },
-  { path: 'tree', component: TableTreeComponent, canActivate: [MsalGuard] },
-  { path: 'expansion-panel', component: ExpansionPanelComponent },
-  { path: 'card', component: CardComponent },
-  { path: 'signal', component: SignalReceiverComponent },
-  { path: 'chips', component: ChipsComponent },
-  { path: 'stepper', component: StepperComponent },
-  { path: 'select', component: MultiSelectComponent },
+  { path: 'table', component: TableViewComponent },
+  { path: 'tree', component: TableViewComponent, canActivate: [MsalGuard] },
+  { path: 'expansion-panel', component: ExpansionViewComponent },
+  { path: 'card', component: CardViewComponent },
+  { path: 'signal', component: SignalViewComponent },
+  { path: 'chips', component: ChipsViewComponent },
+  { path: 'stepper', component: StepperViewComponent },
+  { path: 'select', component: SelectViewComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
 ];
