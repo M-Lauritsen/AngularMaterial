@@ -9,11 +9,12 @@ import { SelectViewComponent } from './pages/select-view/select-view.component';
 import { SignalViewComponent } from './pages/signal-view/signal-view.component';
 import { StepperViewComponent } from './pages/stepper-view/stepper-view.component';
 import { TableViewComponent } from './pages/table-view/table-view.component';
+import { TreeViewComponent } from './pages/tree-view/tree-view.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableViewComponent },
-  { path: 'tree', component: TableViewComponent, canActivate: [MsalGuard] },
+  { path: 'tree', component: TreeViewComponent, canActivate: [MsalGuard] },
   { path: 'expansion-panel', component: ExpansionViewComponent },
   { path: 'card', component: CardViewComponent },
   { path: 'signal', component: SignalViewComponent },
