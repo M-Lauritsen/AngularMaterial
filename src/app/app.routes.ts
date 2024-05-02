@@ -10,6 +10,7 @@ import { SignalViewComponent } from './pages/signal-view/signal-view.component';
 import { StepperViewComponent } from './pages/stepper-view/stepper-view.component';
 import { TableViewComponent } from './pages/table-view/table-view.component';
 import { TreeViewComponent } from './pages/tree-view/tree-view.component';
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,5 +22,9 @@ export const routes: Routes = [
   { path: 'chips', component: ChipsViewComponent },
   { path: 'stepper', component: StepperViewComponent },
   { path: 'select', component: SelectViewComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
+  {
+    path: 'profile',
+    component: ProfileViewComponent,
+    canActivate: [MsalGuard],
+  },
 ];
