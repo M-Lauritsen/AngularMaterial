@@ -25,6 +25,8 @@ import {
 } from '@azure/msal-browser';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { WeatherService } from './services/weather.service';
+import { PressenceService } from './services/pressence.service';
+import { environment } from './environment';
 
 @Component({
   selector: 'app-root',
@@ -54,7 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private weatherService: WeatherService,
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
+    private msalBroadcastService: MsalBroadcastService,
+    private pressence: PressenceService
   ) {
     this.userService.fetchUsers();
   }
@@ -92,6 +95,17 @@ export class AppComponent implements OnInit, OnDestroy {
       let accounts = this.authService.instance.getAllAccounts();
       this.authService.instance.setActiveAccount(accounts[0]);
     }
+
+    var request = {
+      scopes: environment.WeatherApiConfig.scopes,
+    };
+    this.authService.acquireTokenSilent(request).subscribe((response) => {
+      console.log(response);
+      this.pressence.createdHubConnection(response);
+    });
+
+    const user = this.pressence.onlineUsers$;
+    console.log('Hub user', user);
   }
 
   setLoginDisplay() {

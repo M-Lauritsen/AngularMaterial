@@ -10,6 +10,9 @@ export const environment = {
     uri: 'https://localhost:7089/weatherforecast',
     scopes: ['api://c5825c41-1e96-43d8-a559-a141d6565e88/Weather.Read'],
   },
+  SignalR: {
+    uri: 'https://localhost:7089/hubs/',
+  },
 };
 
 export const msalConfig: Configuration = {
