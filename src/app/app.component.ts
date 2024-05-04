@@ -65,8 +65,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authService.handleRedirectObservable().subscribe();
 
-    this.setLoginDisplay();
-
     this.msalBroadcastService.inProgress$
       .pipe(
         filter(
@@ -100,7 +98,6 @@ export class AppComponent implements OnInit, OnDestroy {
       scopes: environment.WeatherApiConfig.scopes,
     };
     this.authService.acquireTokenSilent(request).subscribe((response) => {
-      console.log(response);
       this.pressence.createdHubConnection(response);
     });
 
@@ -115,6 +112,7 @@ export class AppComponent implements OnInit, OnDestroy {
   login() {
     this.authService.loginRedirect();
   }
+
   loginRedirect() {
     if (this.msalGuardConfig.authRequest) {
       this.authService.loginRedirect({

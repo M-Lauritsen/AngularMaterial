@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject, take } from 'rxjs';
 import { environment } from '../environment';
-import { ProfileType } from '../models/profile-type';
-import { AccountInfo, AuthenticationResult } from '@azure/msal-browser';
+import { AuthenticationResult } from '@azure/msal-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -19,19 +18,20 @@ export class PressenceService {
 
   createdHubConnection(msalToken: AuthenticationResult) {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl(this.url + 'pressence', {
+      .withUrl(this.url + '/pressence', {
         accessTokenFactory: () => msalToken.accessToken,
       })
       .withAutomaticReconnect()
       .build();
 
-    this.hubConnection.start().catch((error) => console.log(error));
+    this.hubConnection
+      .start()
+      .then(() => console.log('Connection Started'))
+      .catch((error) => console.log(error));
 
     this.hubConnection.on('UserIsOnline', (username) => {
-      console.log(username);
       this.onlineUsers$.pipe(take(1)).subscribe((usernames) => {
         this.onlineUsersSource.next([...usernames, username]);
-        console.log(...usernames);
       });
     });
 
