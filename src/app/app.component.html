@@ -58,6 +58,18 @@
         <button (click)="getWeather()">Get weather</button>
       </li>
       }
+      <hr />
+      @if (onlineUsers && loginDisplay) {
+      <li>
+        online users:
+        <br />
+
+        @for (user of onlineUsers; track $index) {
+        {{ user }}
+        <br />
+        }
+      </li>
+      }
     </nav>
   </mat-drawer>
   <mat-drawer-content class="content-container">

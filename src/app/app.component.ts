@@ -23,7 +23,7 @@ import {
   InteractionStatus,
   RedirectRequest,
 } from '@azure/msal-browser';
-import { Subject, filter, takeUntil } from 'rxjs';
+import { Observable, Subject, filter, takeUntil } from 'rxjs';
 import { WeatherService } from './services/weather.service';
 import { PressenceService } from './services/pressence.service';
 import { environment } from './environment';
@@ -49,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'Angular Material';
   isIframe = false;
   loginDisplay = false;
+  onlineUsers: string[] = [];
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
@@ -101,8 +102,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.pressence.createdHubConnection(response);
     });
 
-    const user = this.pressence.onlineUsers$;
-    console.log('Hub user', user);
+    this.pressence.onlineUsers$.subscribe((value) => {
+      this.onlineUsers = value;
+    });
+    console.log(this.onlineUsers);
   }
 
   setLoginDisplay() {
@@ -123,6 +126,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   logout() {
+    this.pressence.stopHubConnection();
     this.authService.logoutRedirect();
   }
   getWeather() {
