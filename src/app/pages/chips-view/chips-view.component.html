@@ -1,6 +1,2 @@
 <app-chips></app-chips>
-<h2>Users on this page:</h2>
-@for (user of usersOnPage(); track $index) {
-{{ user }}
-<br />
-}
+<app-presence-tracker [route]="'/chips'"></app-presence-tracker>
