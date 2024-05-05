@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { ChipsComponent } from '../../components/chips/chips.component';
+import { PresenceService } from '../../services/presence.service';
 
 @Component({
   selector: 'app-chips-view',
@@ -8,4 +9,9 @@ import { ChipsComponent } from '../../components/chips/chips.component';
   templateUrl: './chips-view.component.html',
   styleUrl: './chips-view.component.scss',
 })
-export class ChipsViewComponent {}
+export class ChipsViewComponent {
+  usersOnPage = computed(
+    () => this.presenceService.pageUsersMap().get('/chips') || []
+  );
+  constructor(public presenceService: PresenceService) {}
+}

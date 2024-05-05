@@ -1,6 +1,6 @@
 <app-stepper></app-stepper>
 <h2>Users on this page:</h2>
-@for (user of presenceService.usersOnPage(); track $index) {
+@for (user of usersOnPage(); track $index) {
 {{ user }}
 <br />
 }

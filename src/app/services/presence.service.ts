@@ -14,8 +14,13 @@ export class PresenceService {
   private onlineUsersSource: WritableSignal<string[]> = signal([]);
   onlineUsers: Signal<string[]> = this.onlineUsersSource;
 
-  private usersOnPageSource: WritableSignal<string[]> = signal([]); // Using signal
-  usersOnPage: Signal<string[]> = this.usersOnPageSource; // Exposing it as signal
+  // private usersOnPageSource: WritableSignal<string[]> = signal([]); // Using signal
+  // usersOnPage: Signal<string[]> = this.usersOnPageSource; // Exposing it as signal
+
+  private pageUsersMapSource: WritableSignal<Map<string, string[]>> = signal(
+    new Map()
+  );
+  pageUsersMap: Signal<Map<string, string[]>> = this.pageUsersMapSource;
 
   private routerInitialized = false; // Flag to check router initialization
 
@@ -58,8 +63,12 @@ export class PresenceService {
     });
 
     // Listen for UsersOnPage event
-    this.hubConnection.on('UsersOnPage', (usernames: string[]) => {
-      this.usersOnPageSource.set(usernames); // Update the users on the current page
+    this.hubConnection.on('UsersOnPage', (route: string, users: string[]) => {
+      this.pageUsersMapSource.update((currentMap) => {
+        const newMap = new Map(currentMap);
+        newMap.set(route, users);
+        return newMap;
+      });
     });
   }
 
