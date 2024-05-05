@@ -8,7 +8,7 @@ import { AuthenticationResult } from '@azure/msal-browser';
 @Injectable({
   providedIn: 'root',
 })
-export class PressenceService {
+export class PresenceService {
   url = environment.SignalR.uri;
   private hubConnection!: HubConnection;
   private onlineUsersSource: WritableSignal<string[]> = signal([]);
@@ -18,7 +18,7 @@ export class PressenceService {
 
   createdHubConnection(msalToken: AuthenticationResult) {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl(this.url + '/pressence', {
+      .withUrl(this.url + '/presence', {
         accessTokenFactory: () => msalToken.accessToken,
       })
       .withAutomaticReconnect()

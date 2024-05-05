@@ -1,10 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import {
-  EventType,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
@@ -18,14 +13,10 @@ import {
   MsalBroadcastService,
   MsalModule,
 } from '@azure/msal-angular';
-import {
-  EventMessage,
-  InteractionStatus,
-  RedirectRequest,
-} from '@azure/msal-browser';
-import { Observable, Subject, filter, takeUntil } from 'rxjs';
+import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { Subject, filter, takeUntil } from 'rxjs';
 import { WeatherService } from './services/weather.service';
-import { PressenceService } from './services/pressence.service';
+import { PresenceService } from './services/presence.service';
 import { environment } from './environment';
 
 @Component({
@@ -57,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    public userPresence: PressenceService
+    public userPresence: PresenceService
   ) {
     this.userService.fetchUsers();
   }
