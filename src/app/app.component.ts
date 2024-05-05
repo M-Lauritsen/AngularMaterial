@@ -49,7 +49,6 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'Angular Material';
   isIframe = false;
   loginDisplay = false;
-  onlineUsers: string[] = [];
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
@@ -58,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    private pressence: PressenceService
+    public userPresence: PressenceService
   ) {
     this.userService.fetchUsers();
   }
@@ -76,15 +75,11 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
+        this.signalrConnection();
       });
   }
 
   checkAndSetActiveAccount() {
-    /**
-     * If no active account set but there are accounts signed in, sets first account to active account
-     * To use active account set here, subscribe to inProgress$ first in your component
-     * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
-     */
     let activeAccount = this.authService.instance.getActiveAccount();
 
     if (
@@ -94,18 +89,15 @@ export class AppComponent implements OnInit, OnDestroy {
       let accounts = this.authService.instance.getAllAccounts();
       this.authService.instance.setActiveAccount(accounts[0]);
     }
+  }
 
+  signalrConnection() {
     var request = {
       scopes: environment.WeatherApiConfig.scopes,
     };
     this.authService.acquireTokenSilent(request).subscribe((response) => {
-      this.pressence.createdHubConnection(response);
+      this.userPresence.createdHubConnection(response);
     });
-
-    this.pressence.onlineUsers$.subscribe((value) => {
-      this.onlineUsers = value;
-    });
-    console.log(this.onlineUsers);
   }
 
   setLoginDisplay() {
@@ -126,7 +118,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   logout() {
-    this.pressence.stopHubConnection();
+    this.userPresence.stopHubConnection();
     this.authService.logoutRedirect();
   }
   getWeather() {

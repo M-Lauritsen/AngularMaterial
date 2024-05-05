@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, WritableSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject, take } from 'rxjs';
@@ -11,8 +11,8 @@ import { AuthenticationResult } from '@azure/msal-browser';
 export class PressenceService {
   url = environment.SignalR.uri;
   private hubConnection!: HubConnection;
-  private onlineUsersSource = new BehaviorSubject<string[]>([]);
-  onlineUsers$ = this.onlineUsersSource.asObservable();
+  private onlineUsersSource: WritableSignal<string[]> = signal([]);
+  onlineUsers: Signal<string[]> = this.onlineUsersSource;
 
   constructor(private router: Router) {}
 
@@ -29,22 +29,24 @@ export class PressenceService {
       .then(() => console.log('Connection Started'))
       .catch((error) => console.log(error));
 
-    this.hubConnection.on('UserIsOnline', (username) => {
-      this.onlineUsers$.pipe(take(1)).subscribe((usernames) => {
-        this.onlineUsersSource.next([...usernames, username]);
-      });
+    // When a user is online
+    this.hubConnection.on('UserIsOnline', (username: string) => {
+      this.onlineUsersSource.update((currentUsers) => [
+        ...currentUsers,
+        username,
+      ]);
     });
 
-    this.hubConnection.on('UserIsOffline', (username) => {
-      this.onlineUsers$.pipe(take(1)).subscribe((usernames) => {
-        this.onlineUsersSource.next([
-          ...usernames.filter((x) => x !== username),
-        ]);
-      });
+    // When a user is offline
+    this.hubConnection.on('UserIsOffline', (username: string) => {
+      this.onlineUsersSource.update((currentUsers) =>
+        currentUsers.filter((x) => x !== username)
+      );
     });
 
+    // Set the list of currently online users
     this.hubConnection.on('GetOnlineUsers', (usernames: string[]) => {
-      this.onlineUsersSource.next(usernames);
+      this.onlineUsersSource.set(usernames);
     });
   }
 

@@ -59,12 +59,12 @@
       </li>
       }
       <hr />
-      @if (onlineUsers && loginDisplay) {
+      @if (userPresence.onlineUsers() && loginDisplay) {
       <li>
         online users:
         <br />
 
-        @for (user of onlineUsers; track $index) {
+        @for (user of userPresence.onlineUsers(); track $index) {
         {{ user }}
         <br />
         }
