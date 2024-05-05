@@ -1,5 +1,11 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
@@ -48,7 +54,8 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    public userPresence: PresenceService
+    public userPresence: PresenceService,
+    private router: Router
   ) {
     this.userService.fetchUsers();
   }
