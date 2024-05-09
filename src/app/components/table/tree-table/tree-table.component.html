@@ -13,6 +13,7 @@
           <button
             mat-icon-button
             [style.visibility]="!data.expandable ? 'hidden' : ''"
+            [style.marginLeft.px]="data.level * 32"
             (click)="treeControl.toggle(data)"
           >
             <mat-icon class="mat-icon-rtl-mirror">
