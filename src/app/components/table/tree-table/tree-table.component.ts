@@ -91,6 +91,40 @@ export class TreeTableComponent {
     }
     this.areNodesExpanded.update(() => !this.areNodesExpanded());
   }
+
+  isParentExpanded(node: DynamicNode): boolean {
+    return this.treeControl.isExpanded(node);
+  }
+
+  getParentNode(node: DynamicNode): DynamicNode | null {
+    const currentLevel = node.level;
+    const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
+
+    for (let i = startIndex; i >= 0; i--) {
+      const currentNode = this.treeControl.dataNodes[i];
+
+      if (currentNode.level < currentLevel) {
+        return currentNode;
+      }
+    }
+
+    return null;
+  }
+
+  isAnyParentExpanded(node: DynamicNode): boolean {
+    let parent = this.getParentNode(node);
+    while (parent) {
+      if (this.isParentExpanded(parent)) {
+        return true;
+      }
+      parent = this.getParentNode(parent);
+    }
+    return false;
+  }
+
+  isChildNode(node: DynamicNode): boolean {
+    return node.level > 0;
+  }
 }
 
 interface DynamicNode {

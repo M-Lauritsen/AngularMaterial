@@ -3,12 +3,15 @@
 .density-settings {
   @include mat.table-density(-4);
   @include mat.icon-button-density(-5);
-}
+  .expanded-parent-row {
+    background-color: #bebebe; /* Light cyan background for expanded parent rows */
+  }
 
-.bold-text {
-  font-weight: bold;
-}
+  .expanded-child-row {
+    background-color: #ebebeb; /* Lighter cyan background for expanded child rows */
+  }
 
-.expanded-row {
-  background-color: #f0f0f0; /* Adjust the color to the slightly darker shade you want */
+  .bold-text {
+    font-weight: bold;
+  }
 }
