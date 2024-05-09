@@ -4,6 +4,7 @@ import { BottomsheetComponent } from '../../components/bottomsheet/bottomsheet.c
 import { CustomTableComponent } from '../../components/table/custom-table/custom-table.component';
 import { StandardTableComponent } from '../../components/table/standard-table/standard-table.component';
 import { TableToggleColumsComponent } from '../../components/table/table-toggle-colums/table-toggle-colums.component';
+import { TreeTableComponent } from '../../components/table/tree-table/tree-table.component';
 
 @Component({
   selector: 'app-table-view',
@@ -14,6 +15,7 @@ import { TableToggleColumsComponent } from '../../components/table/table-toggle-
     TableToggleColumsComponent,
     StandardTableComponent,
     CustomTableComponent,
+    TreeTableComponent,
   ],
   templateUrl: './table-view.component.html',
   styleUrl: './table-view.component.scss',

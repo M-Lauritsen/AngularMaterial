@@ -1,0 +1,14 @@
+@use "@angular/material" as mat;
+
+.density-settings {
+  @include mat.table-density(-4);
+  @include mat.icon-button-density(-5);
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.expanded-row {
+  background-color: #f0f0f0; /* Adjust the color to the slightly darker shade you want */
+}

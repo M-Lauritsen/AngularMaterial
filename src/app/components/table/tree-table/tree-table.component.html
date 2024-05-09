@@ -1,0 +1,51 @@
+<div class="density-settings">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="toggleExpandCollapse()">
+          <mat-icon class="mat-icon-rtl-mirror">{{
+            areNodesExpanded() ? "expand_more" : "chevron_right"
+          }}</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let data">
+        <ng-container>
+          <button
+            mat-icon-button
+            [style.visibility]="!data.expandable ? 'hidden' : ''"
+            (click)="treeControl.toggle(data)"
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{
+                treeControl.isExpanded(data) ? "expand_more" : "chevron_right"
+              }}
+            </mat-icon>
+          </button>
+        </ng-container>
+        <span [ngClass]="{ 'bold-text': treeControl.isExpanded(data) }">{{
+          data["expand"]
+        }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container
+      *ngFor="let item of displayedColumns.slice(1); let i = index"
+      [matColumnDef]="item"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        {{ item }}
+      </th>
+
+      <td mat-cell *matCellDef="let data">
+        {{ data[item] }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [ngClass]="{ 'expanded-row': treeControl.isExpanded(row) }"
+    ></tr>
+  </table>
+</div>

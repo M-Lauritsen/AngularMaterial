@@ -3,7 +3,6 @@
   height: 100%;
 }
 .sidenav-container {
-  height: 100%;
   padding: 20px;
   .nav-container {
     display: flex;
@@ -17,7 +16,7 @@
 }
 
 .content-container {
-  padding: 20px;
+  padding: 40px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
