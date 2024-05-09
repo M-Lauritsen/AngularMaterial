@@ -4,21 +4,22 @@
   @include mat.table-density(-4);
   @include mat.icon-button-density(-5);
   overflow-x: auto;
-  .expanded-parent-row {
-    background-color: #bebebe; /* Light cyan background for expanded parent rows */
-  }
+}
 
-  .expanded-child-row {
-    background-color: #ebebeb; /* Lighter cyan background for expanded child rows */
-  }
+.expanded-parent-row {
+  background-color: #bebebe; /* Light cyan background for expanded parent rows */
+}
 
-  .bold-text {
-    font-weight: bold;
-  }
-  table,
-  th,
-  td {
-    border-bottom: 1px solid #00000027;
-    border-collapse: collapse;
-  }
+.expanded-child-row {
+  background-color: #ebebeb; /* Lighter cyan background for expanded child rows */
+}
+
+.bold-text {
+  font-weight: bold;
+}
+tr {
+  border-bottom: 1px solid #ddd;
+}
+tr:hover {
+  background-color: #bebebe;
 }
