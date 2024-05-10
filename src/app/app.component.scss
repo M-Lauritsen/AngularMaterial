@@ -1,9 +1,12 @@
 .nav-container {
   width: 100%;
   height: 100%;
+overflow-y: auto;
 }
+
 .sidenav-container {
   padding: 20px;
+  position: fixed;
   .nav-container {
     display: flex;
     justify-content: flex-start;
@@ -16,7 +19,6 @@
 }
 
 .content-container {
-  padding: 40px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -24,5 +26,7 @@
 }
 
 .router-container {
+  padding: 40px;
   width: 100%;
+  height: 100%;
 }

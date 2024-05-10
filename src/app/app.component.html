@@ -17,23 +17,14 @@
         <a routerLink="/" routerLinkActive="active">Home</a>
       </li>
       <li>
-        <a
-          routerLink="/table"
-          routerLinkActive="active"
-          matBadge="{{ userService.getUsers().length }}"
-          matBadgeOverlap="false"
-          matBadgeSize="small"
-          matBadgeColor="warn"
-          >Table</a
-        >
+        <a routerLink="/table" routerLinkActive="active" matBadge="{{ userService.getUsers().length }}"
+          matBadgeOverlap="false" matBadgeSize="small" matBadgeColor="warn">Table</a>
       </li>
       <li>
         <a routerLink="/tree" routerLinkActive="active">Tree</a>
       </li>
       <li>
-        <a routerLink="/expansion-panel" routerLinkActive="active"
-          >Expansion panel</a
-        >
+        <a routerLink="/expansion-panel" routerLinkActive="active">Expansion panel</a>
       </li>
       <li>
         <a routerLink="/card" routerLinkActive="active">Card</a>
