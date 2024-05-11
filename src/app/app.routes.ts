@@ -11,6 +11,7 @@ import { StepperViewComponent } from './pages/stepper-view/stepper-view.componen
 import { TableViewComponent } from './pages/table-view/table-view.component';
 import { TreeViewComponent } from './pages/tree-view/tree-view.component';
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
+import { ChartViewComponent } from './pages/chart-view/chart-view.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'signal', component: SignalViewComponent },
   { path: 'chips', component: ChipsViewComponent },
   { path: 'stepper', component: StepperViewComponent },
+  { path: 'chart', component: ChartViewComponent },
   { path: 'select', component: SelectViewComponent },
   {
     path: 'profile',
