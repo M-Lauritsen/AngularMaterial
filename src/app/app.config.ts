@@ -22,12 +22,7 @@ import {
   MsalInterceptorConfiguration,
   MsalService,
 } from '@azure/msal-angular';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-  withFetch,
-  HTTP_INTERCEPTORS,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withFetch, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
